@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Original idea from https://github.com/awilliams/dotfiles/
+# Thanks Adam!
+
+# ARG1 = remote host, ie db.example.com, ip or ssh-host-configured
+# ARG2 = remote host port to forward, ie 80
+# ARG3 = port to forward, ie 9999
+
+echo "Tunneling $1 : $2 -> http://localhost:$3"
+
+# ssh -C us-pro-db1 -L 9999:localhost:5984 -N
+ssh -C $1 -L $3:localhost:$2 -N
